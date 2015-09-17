@@ -1,3 +1,4 @@
+from hitchtest.environment import checks
 from hitchserve import Service
 from os.path import join
 import signal
@@ -35,6 +36,7 @@ class RabbitService(Service):
         self.initialize = initialize
         kwargs['command'] = [rabbit_package.server, ]
         kwargs['log_line_ready_checker'] = lambda line: "completed" in line
+        checks.freeports([5672, ])
         super(RabbitService, self).__init__(**kwargs)
 
     def setup(self):

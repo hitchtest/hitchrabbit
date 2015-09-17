@@ -26,6 +26,8 @@ class RabbitPackage(HitchPackage):
         self.directory = join(self.get_build_directory(), "rabbitmq-server-{}".format(self.version))
         self.bin_directory = bin_directory
 
+        checks.packages(["build-essential", "xsltproc", "erlang-nox", "erlang-dev", "libxml2-dev", "libxslt1-dev", ])
+
     def verify(self):
         pass
 
