@@ -15,7 +15,7 @@ def read(*parts):
     return codecs.open(os.path.join(os.path.abspath(os.path.dirname(__file__)), *parts), 'r').read()
 
 setup(name="hitchrabbit",
-      version="0.2.1",
+      version="0.2.2",
       description="Plugin to run RabbitMQ using the Hitch testing framework.",
       long_description=read('README.rst'),
       classifiers=[

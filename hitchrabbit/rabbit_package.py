@@ -1,5 +1,6 @@
 from hitchtest import HitchPackage, utils
 from subprocess import check_output, call
+from hitchtest.environment import checks
 from os.path import join, exists
 from os import makedirs, chdir, chmod
 import shutil
