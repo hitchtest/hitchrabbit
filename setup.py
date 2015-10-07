@@ -7,7 +7,18 @@ import codecs
 import sys
 import os
 
-# xsltproc erlang-nox erlang-dev
+
+class CustomInstall(install):
+    def run(self):
+        try:
+            import unixpackage
+            unixpackage.install([
+                "xsltproc", "erlang-nox", "erlang-dev", "libxml2-dev", "libxslt1-dev",
+            ], polite=True)
+        except ImportError:
+            sys.stderr.write("WARNING : unixpackage unavailable; cannot check for system dependencies.")
+            sys.stderr.flush()
+        install.run(self)
 
 def read(*parts):
     # intentionally *not* adding an encoding option to open
@@ -45,4 +56,5 @@ setup(name="hitchrabbit",
       package_data={},
       zip_safe=False,
       include_package_data=True,
+      cmdclass={'install': CustomInstall},
 )
