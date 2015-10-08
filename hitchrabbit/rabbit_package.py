@@ -3,6 +3,7 @@ from subprocess import check_output, call
 from hitchtest.environment import checks
 from os.path import join, exists
 from os import makedirs, chdir, chmod
+import hitchrabbit
 import shutil
 import getpass
 import stat
@@ -27,7 +28,7 @@ class RabbitPackage(HitchPackage):
         self.directory = join(self.get_build_directory(), "rabbitmq-server-{}".format(self.version))
         self.bin_directory = bin_directory
 
-        checks.packages(["xsltproc", "erlang-nox", "erlang-dev", "libxml2-dev", "libxslt1-dev", ])
+        checks.packages(hitchrabbit.UNIXPACKAGES)
 
     def verify(self):
         pass
